@@ -121,6 +121,18 @@
       padding: 30px;
     }
 
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      margin-bottom: 24px;
+      background: #0b0b0b;
+      display: block;
+    }
+
+
     .hero-card blockquote {
       margin: 0;
       border-left: 3px solid var(--accent);
@@ -145,13 +157,13 @@
 
     .section.alt { background: var(--panel-2); }
 
-.section-heading {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 22px;
-  margin-bottom: 24px;
-  align-items: baseline;
-}
+    .section-heading {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      margin-bottom: 24px;
+      align-items: baseline;
+    }
 
     .section-heading h2 { margin: 0; }
 
@@ -594,6 +606,8 @@
         </div>
       </div>
       <div class="hero-card">
+        <img src="images/laura-photo.png" alt="Photo of Laura Kentcroft" class="profile-photo">
+
         <blockquote>
           I like designing practical, player-focused systems that make sense creatively and technically.
         </blockquote>
