@@ -121,6 +121,13 @@
       padding: 30px;
     }
 
+.profile-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
 .profile-photo {
   width: 220px;
   height: 220px;
@@ -128,7 +135,24 @@
   object-position: center top;
   border-radius: 24px;
   border: 2px solid var(--accent);
-  margin-bottom: 24px;
+}
+
+.profile-copy blockquote {
+  margin: 0;
+}
+
+.profile-copy p {
+  margin-top: 22px;
+}
+    @media (max-width: 900px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 
@@ -604,16 +628,19 @@
           <span class="tag">Gameplay</span>
         </div>
       </div>
-      <div class="hero-card">
-        <img src="images/laura-photo.png" alt="Photo of Laura Kentcroft" class="profile-photo">
+      <div class="hero-card profile-card">
+  <img src="images/laura-photo.png" alt="Photo of Laura Kentcroft" class="profile-photo">
 
-        <blockquote>
-          I like designing practical, player-focused systems that make sense creatively and technically.
-        </blockquote>
-        <p>
-          My programming background helps me understand implementation constraints, communicate clearly with engineers and design features that are more likely to survive contact with production.
-        </p>
-      </div>
+  <div class="profile-copy">
+    <blockquote>
+      I like designing practical, player-focused systems that make sense creatively and technically.
+    </blockquote>
+
+    <p>
+      My programming background helps me understand implementation constraints, communicate clearly with engineers and design features that are more likely to survive contact with production.
+    </p>
+  </div>
+</div>
     </section>
 
     <section class="section">
