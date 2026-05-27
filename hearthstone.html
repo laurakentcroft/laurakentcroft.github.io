@@ -36,14 +36,14 @@
   .page {
     width: 100%;
     min-height: 100vh;
-    padding: 58px 64px 72px;
+    padding: 42px 64px 72px;
   }
 
   .hero {
     display: grid;
     grid-template-columns: 0.92fr 1.08fr;
     gap: 54px;
-    align-items: center;
+    align-items: start;
     border: 1px solid #1f1f1f;
     background: radial-gradient(circle at 78% 18%, rgba(110,231,240,0.18), transparent 28%),
                 linear-gradient(135deg, #060606 0%, #090909 64%, #111 100%);
@@ -529,11 +529,183 @@
       align-items: flex-start;
     }
   }
+
+  .explore-buttons {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .explore-buttons .case-button {
+    margin-top: 0;
+  }
+
+  /* HEADER / NAVIGATION */
+  .site-header {
+    width: 100%;
+    background: rgba(5, 5, 5, 0.96);
+    border-bottom: 1px solid #202020;
+    padding: 22px 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .site-logo {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-logo:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .nav-links a:hover,
+  .dropdown:hover .dropdown-toggle {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    cursor: default;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 300px;
+    background: #0b0b0b;
+    border: 1px solid #282828;
+    padding: 10px 0;
+    z-index: 1001;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 12px;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover {
+    color: var(--accent);
+    background: #111;
+    text-decoration: none;
+  }
+
+  @media (max-width: 800px) {
+    .site-header {
+      padding: 18px 20px;
+    }
+
+    .site-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .dropdown-menu {
+      right: auto;
+      left: 0;
+    }
+
+    .explore-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+  }
+
 </style>
 </head>
 
 <body>
 <div id="top"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Laura Kentcroft</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Case Studies</button>
+
+        <div class="dropdown-menu">
+          <a href="metro-rivals.html">Metro Rivals</a>
+          <a href="design-sample.html">Design Sample</a>
+          <a href="hearthstone.html">Hearthstone</a>
+          <a href="gameplay-programming.html">Gameplay Programming Foundation</a>
+        </div>
+      </div>
+
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
 
 <main class="page">
 
@@ -557,6 +729,28 @@
 <section class="section"><div class="section-heading"><div><div class="eyebrow">Iteration</div></div><div><h2>How feedback shaped the work</h2></div></div><table><tr><th>Iteration input</th><th>How it shaped the work</th></tr><tr><td>Telemetry and metrics</td><td>Highlighted underperforming areas and player friction.</td></tr><tr><td>Design review</td><td>Improved clarity, flow and design consistency.</td></tr><tr><td>Engineering feedback</td><td>Clarified constraints, risk and implementation effort.</td></tr><tr><td>Platform considerations</td><td>Helped adapt flows for PC and mobile expectations.</td></tr><tr><td>Stakeholder discussion</td><td>Aligned proposed changes with live-game goals and priorities.</td></tr><tr><td>Implementation testing</td><td>Validated behaviour within the constraints of a large shared codebase.</td></tr></table></section>
 
 <section class="section"><div class="section-heading"><div><div class="eyebrow">Lessons Learned</div></div><div><h2>Key takeaways</h2></div></div><div class="final-grid"><div class="card green"><h3>What this strengthened</h3><ul><li>Product and UX thinking for live games.</li><li>Data-informed design decision making.</li><li>Documentation that supports shared understanding.</li><li>Technical confidence in design conversations.</li></ul></div><div class="card green"><h3>How it shaped my design style</h3><p>This work reinforced how important clarity, trust and data-informed iteration are in player-facing systems, especially in live games.</p><p>It also showed how useful my programming background is in design conversations: I can understand implementation constraints, communicate with engineers and help make design choices that are both player-focused and technically achievable.</p></div></div></section>
+
+<section class="section">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">Explore More</div>
+    </div>
+
+    <div>
+      <h2>Want to see the rest of my work?</h2>
+
+      <div class="explore-buttons">
+        <a href="index.html#case-studies" class="case-button accent">
+          View all case studies
+        </a>
+
+        <a href="about.html" class="case-button gold">
+          Learn more about me
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="section-heading">
