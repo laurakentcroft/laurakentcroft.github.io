@@ -8,9 +8,9 @@
 <style>
 :root { --bg:#050505; --panel:#101010; --panel-2:#171717; --text:#f4f4f4; --muted:#c9c9c9; --soft:#8f8f8f; --line:#333333; --accent:#6ee7f0; --accent-2:#ffcc66; --green:#8bdc9b; --pink:#e6a4ff; }
 * { box-sizing:border-box; }
-html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,Avenir,Helvetica,Arial,sans-serif; line-height:1.55; }
+html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,Avenir,Helvetica,Arial,sans-serif; line-height:1.55; overflow-x:hidden; }
 a { color:inherit; }
-.page { width:100%; min-height:100vh; padding:58px 64px 72px; }
+.page { width:100%; min-height:100vh; padding:42px 64px 72px; }
 .hero { display:grid; grid-template-columns:0.92fr 1.08fr; gap:54px; align-items:center; border:1px solid #1f1f1f; background:radial-gradient(circle at 78% 18%, rgba(110,231,240,0.16), transparent 28%), linear-gradient(135deg,#060606 0%,#090909 64%,#111 100%); padding:52px 48px; margin-bottom:34px; }
 h1 { font-size:52px; line-height:1.05; margin:0 0 26px; letter-spacing:0.01em; }
 h2 { font-size:30px; line-height:1.18; margin:0 0 20px; }
@@ -112,15 +112,166 @@ ul { margin:0; padding-left:20px; color:var(--muted); } li { margin-bottom:7px; 
   background: var(--pink);
   color: #050505;
 }
-.contact-buttons {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 22px;
+
+
+/* HEADER / NAVIGATION */
+.site-header {
+  width: 100%;
+  background: rgba(5, 5, 5, 0.96);
+  border-bottom: 1px solid #202020;
+  padding: 22px 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
+
+.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-logo {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-logo:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.nav-links a:hover,
+.dropdown:hover .dropdown-toggle {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: default;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 300px;
+  background: #0b0b0b;
+  border: 1px solid #282828;
+  padding: 10px 0;
+  z-index: 1001;
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 18px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  color: var(--accent);
+  background: #111;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    padding: 18px 20px;
+  }
+
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}
+
 </style>
 </head>
 <body>
+<div id="top"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Laura Kentcroft</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Case Studies</button>
+
+        <div class="dropdown-menu">
+          <a href="metro-rivals.html">Metro Rivals</a>
+          <a href="design-sample.html">Design Sample</a>
+          <a href="hearthstone.html">Hearthstone</a>
+          <a href="gameplay-programming.html">Gameplay Programming Foundation</a>
+        </div>
+      </div>
+
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
 <main class="page">
   <section class="hero">
     <div>
@@ -156,13 +307,14 @@ ul { margin:0; padding-left:20px; color:var(--muted); } li { margin-bottom:7px; 
       </div>
       <div class="card gold">
         <div class="card-number">02</div>
-        <div class="card-title">Quest & Narrative Design Sample</div>
+        <div class="card-title">Quest & Narrative Design Example</div>
         <div class="card-subtitle">Interactive Storytelling, Quest Flow & Player Choice</div>
         <p class="focus"><strong>Focus areas:</strong> Quest structure · Dialogue design · Character motivation · Branching choices · Progression · Rewards · Blueprint-style logic</p>
         <p>An original, anonymised design sample showing how I approach quest design as both narrative and systems work: defining what the player does, why they care, how choices are expressed, and how the design can be implemented and tested.</p>
 <a href="design-sample.html" class="case-button gold">
   Explore Design Sample
 </a>
+
       </div>
       <div class="card green">
         <div class="card-number">03</div>
@@ -214,15 +366,8 @@ ul { margin:0; padding-left:20px; color:var(--muted); } li { margin-bottom:7px; 
       <div class="card gold">
         <h3>Connect</h3>
         <p>You can reach me through my portfolio contact page or LinkedIn.</p>
-        <div class="contact-buttons">
-  <a href="mailto:laurakentcroft@gmail.com" class="case-button accent">
-    Email
-  </a>
-
-  <a href="https://www.linkedin.com/in/laura-kentcroft/" class="case-button accent" target="_blank">
-    LinkedIn
-  </a>
-</div>
+        <div class="contact-links"><a href="mailto:laurakentcroft@gmail.com">Email</a><a href="https://www.linkedin.com/in/laura-kentcroft/" target="_blank">LinkedIn</a></div>
+      </div>
     </div>
   </section>
 </main>
