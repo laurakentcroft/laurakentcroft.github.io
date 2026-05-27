@@ -36,14 +36,14 @@
   .page {
     width: 100%;
     min-height: 100vh;
-    padding: 58px 64px 72px;
+    padding: 42px 64px 72px;
   }
 
   .hero {
     display: grid;
     grid-template-columns: 0.92fr 1.08fr;
     gap: 54px;
-    align-items: center;
+    align-items: start;
     border: 1px solid #1f1f1f;
     background: radial-gradient(circle at 78% 18%, rgba(110,231,240,0.18), transparent 28%),
                 linear-gradient(135deg, #060606 0%, #090909 64%, #111 100%);
@@ -474,6 +474,127 @@
     margin-top: 0;
   }
 
+
+  .explore-buttons {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .explore-buttons .case-button {
+    margin-top: 0;
+  }
+
+  /* HEADER / NAVIGATION */
+  .site-header {
+    width: 100%;
+    background: rgba(5, 5, 5, 0.96);
+    border-bottom: 1px solid #202020;
+    padding: 22px 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .site-logo {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-logo:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .nav-links a:hover,
+  .dropdown:hover .dropdown-toggle {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    cursor: default;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 300px;
+    background: #0b0b0b;
+    border: 1px solid #282828;
+    padding: 10px 0;
+    z-index: 1001;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 12px;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover {
+    color: var(--accent);
+    background: #111;
+    text-decoration: none;
+  }
+
   @media print {
     body {
       background: #050505;
@@ -524,9 +645,30 @@
   }
 
   @media (max-width: 800px) {
-    .contact-buttons {
+    .contact-buttons,
+    .explore-buttons {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .site-header {
+      padding: 18px 20px;
+    }
+
+    .site-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .dropdown-menu {
+      right: auto;
+      left: 0;
     }
   }
 </style>
@@ -534,8 +676,32 @@
 
 <body>
 <div id="top"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Laura Kentcroft</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Case Studies</button>
+
+        <div class="dropdown-menu">
+          <a href="metro-rivals.html">Metro Rivals</a>
+          <a href="design-sample.html">Design Sample</a>
+          <a href="hearthstone.html">Hearthstone</a>
+          <a href="gameplay-programming.html">Gameplay Programming Foundation</a>
+        </div>
+      </div>
+
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
+
 <main class="page">
-<section class="hero"><div><div class="eyebrow">Case Study</div><h1>04 - Gameplay Programming Foundation</h1><div class="subtitle">Multiplayer, Core Systems & PvP</div><p>A case study showing how my gameplay programming background shaped the way I design: with an understanding of technical constraints, player feel, systems behaviour and how implementation choices affect the final experience.</p><div class="tag-row"><span class="tag">Unreal Engine 4/5</span><span class="tag">Blueprints</span><span class="tag">C++</span><span class="tag">Multiplayer systems</span><span class="tag">Core gameplay</span><span class="tag">PvP</span><span class="tag">Boss levels</span></div></div><div class="hero-card"><div class="mini-title">Technical design loop</div><div class="logic-stack"><div class="logic-row"><div class="box">Player Experience Need</div><div class="arrow">→</div><div class="box">System Behaviour</div></div><div class="logic-row"><div class="box">Blueprints & C++</div><div class="arrow">→</div><div class="box">In-Game Testing</div></div><div class="logic-row"><div class="box">Feedback & Constraints</div><div class="arrow">→</div><div class="box">Design Iteration</div></div></div><p class="small">Some details are kept high-level due to project confidentiality.</p></div></section>
+<section class="hero"><div><h1>04 - Gameplay Programming Foundation</h1><div class="subtitle">Multiplayer, Core Systems & PvP</div><p>A case study showing how my gameplay programming background shaped the way I design: with an understanding of technical constraints, player feel, systems behaviour and how implementation choices affect the final experience.</p><div class="tag-row"><span class="tag">Unreal Engine 4/5</span><span class="tag">Blueprints</span><span class="tag">C++</span><span class="tag">Multiplayer systems</span><span class="tag">Core gameplay</span><span class="tag">PvP</span><span class="tag">Boss levels</span></div></div><div class="hero-card"><div class="mini-title">Technical design loop</div><div class="logic-stack"><div class="logic-row"><div class="box">Player Experience Need</div><div class="arrow">→</div><div class="box">System Behaviour</div></div><div class="logic-row"><div class="box">Blueprints & C++</div><div class="arrow">→</div><div class="box">In-Game Testing</div></div><div class="logic-row"><div class="box">Feedback & Constraints</div><div class="arrow">→</div><div class="box">Design Iteration</div></div></div><p class="small">Some details are kept high-level due to project confidentiality.</p></div></section>
 <section class="section"><div class="section-heading"><div class="eyebrow">Overview</div><h2>Programming experience that became a design strength</h2></div><div class="two-col"><div class="card accent"><h3>Role / context</h3><p><strong>Role:</strong> Junior Gameplay Programmer<br><strong>Studio:</strong> BULKHEAD<br><strong>Projects:</strong> Wardogs, Transformers: Reactivate, Killrun and Battalion 1944</p></div><div class="card gold"><h3>Focus areas</h3><p>Gameplay systems, weapons, characters, vendors, checkpoints, multiplayer systems, co-op, matchmaking, combat design, missions, boss levels and moment-to-moment gameplay.</p></div></div></section>
 <section class="section"><div class="section-heading"><div class="eyebrow">The Design Challenge</div><h2>Build systems that worked technically and served the intended player experience</h2></div><p>Gameplay programming often sits close to design because small implementation choices can dramatically change how a feature feels. My challenge was to build and support gameplay systems that were technically reliable while also supporting level flow, progression, combat feel and player clarity.</p><div class="three-col"><div class="card accent"><h3>Checkpoint flow</h3><p>How should a checkpoint system support level flow and progression without interrupting challenge or pacing?</p></div><div class="card gold"><h3>Multiplayer clarity</h3><p>How do multiplayer systems support co-op, matchmaking and combat design while clearly communicating state to players?</p></div><div class="card green"><h3>Moment-to-moment feel</h3><p>How do weapons, vendors, characters and core systems support responsive, readable gameplay?</p></div></div></section>
 <section class="section"><div class="section-heading"><div class="eyebrow">My Contribution</div><h2>Where implementation supported design intent</h2></div><p>Before moving fully into design, I worked as a Junior Gameplay Programmer across multiple indie, AA and AAA projects. This experience shaped the way I design today, especially when working on systems that need to feel good for players and make sense technically.</p><div class="three-col"><div class="card accent"><div class="label">01</div><h3>Gameplay features</h3><p>Designed and implemented gameplay features including weapons, characters, vendors and core gameplay systems.</p></div><div class="card gold"><div class="label">02</div><h3>Checkpoint system</h3><p>Designed and implemented a spline-based checkpoint system to improve level flow and progression.</p></div><div class="card green"><div class="label">03</div><h3>Multiplayer systems</h3><p>Worked on multiplayer systems supporting co-op gameplay, matchmaking and combat design.</p></div><div class="card accent"><div class="label">04</div><h3>Missions and boss levels</h3><p>Contributed to level design, combat encounters, boss fights and moment-to-moment gameplay.</p></div><div class="card gold"><div class="label">05</div><h3>Documentation</h3><p>Created GDDs, TDDs and feature specifications to support collaboration between design and engineering.</p></div><div class="card green"><div class="label">06</div><h3>Unreal implementation</h3><p>Worked in Unreal Engine 4 and 5 using Blueprints and C++.</p></div></div></section>
@@ -544,6 +710,28 @@
 <section class="section"><div class="section-heading"><div class="eyebrow">Implementation & Collaboration</div><h2>Close collaboration across design, engineering and QA</h2></div><div class="two-col"><div class="card accent"><h3>Technical communication</h3><p>This role required clear communication with design, engineering, QA and other disciplines. I learned how to explain technical details, support design goals through implementation and identify when a feature needed more design clarity before it could be built well.</p></div><div class="card gold"><h3>Design awareness</h3><p>Working close to implementation taught me to think about how systems behave in real gameplay, not just how they look in documentation. That awareness now helps me design features that are more practical, testable and production-ready.</p></div></div></section>
 <section class="section"><div class="section-heading"><div class="eyebrow">Iteration</div><h2>How feedback shaped implementation</h2></div><table><tr><th>Iteration input</th><th>How it shaped the work</th></tr><tr><td>Hands-on testing</td><td>Revealed how systems felt in context and whether they supported the intended player experience.</td></tr><tr><td>Peer review</td><td>Improved implementation quality, maintainability and technical clarity.</td></tr><tr><td>QA feedback</td><td>Surfaced bugs, edge cases and unclear behaviours.</td></tr><tr><td>Design feedback</td><td>Helped adjust systems toward better pacing, progression, encounter flow and gameplay feel.</td></tr><tr><td>Practical implementation constraints</td><td>Clarified scope, technical risk and the best path to a shippable solution.</td></tr></table></section>
 <section class="section"><div class="section-heading"><div class="eyebrow">Lessons Learned</div><h2>Key takeaways</h2></div><div class="final-grid"><div class="card green"><h3>What this strengthened</h3><ul><li>Technical confidence in design conversations.</li><li>Understanding of how systems are built, tested and maintained.</li><li>Ability to communicate clearly with engineers and QA.</li><li>Awareness of constraints, edge cases and production realities.</li></ul></div><div class="card green"><h3>How it shaped my design style</h3><p>This experience became the foundation for my current design style. It taught me how to think technically, communicate with engineers, understand constraints and design features that are more likely to survive contact with production.</p><p>It also gave me credibility in technical design conversations because I understand how systems are built, not just how they are imagined.</p></div></div></section>
+<section class="section">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">Explore More</div>
+    </div>
+
+    <div>
+      <h2>Want to see the rest of my work?</h2>
+
+      <div class="explore-buttons">
+        <a href="index.html#case-studies" class="case-button accent">
+          View all case studies
+        </a>
+
+        <a href="about.html" class="case-button gold">
+          Learn more about me
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="section-heading">
     <div>
