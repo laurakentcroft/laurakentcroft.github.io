@@ -31,7 +31,7 @@
   .page {
     width: 100%;
     min-height: 100vh;
-    padding: 58px 64px 72px;
+    padding: 42px 64px 72px;
   }
   .hero {
     display: grid;
@@ -133,6 +133,7 @@
   }
   .card.accent { border-left: 4px solid var(--accent); }
   .card.gold { border-left: 4px solid var(--accent-2); }
+  .card.green { border-left: 4px solid var(--green); }
   ul { margin: 0; padding-left: 20px; color: var(--muted); }
   li { margin: 7px 0; }
   .diagram {
@@ -229,6 +230,18 @@
     color: #050505;
   }
 
+
+  .explore-buttons {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .explore-buttons .case-button {
+    margin-top: 0;
+  }
+
   .contact-buttons {
     display: flex;
     gap: 14px;
@@ -249,9 +262,180 @@
   }
 
   @media (max-width: 800px) {
-    .contact-buttons {
+    .contact-buttons,
+    .explore-buttons {
       flex-direction: column;
       align-items: flex-start;
+    }
+  }
+
+
+  /* HEADER / NAVIGATION */
+  .site-header {
+    width: 100%;
+    background: rgba(5, 5, 5, 0.96);
+    border-bottom: 1px solid #202020;
+    padding: 22px 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .site-logo {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-logo:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .nav-links a:hover,
+  .dropdown:hover .dropdown-toggle {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    cursor: default;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 300px;
+    background: #0b0b0b;
+    border: 1px solid #282828;
+    padding: 10px 0;
+    z-index: 1001;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 12px;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover {
+    color: var(--accent);
+    background: #111;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .page {
+      padding: 28px 20px 42px;
+    }
+
+    .hero,
+    .section-heading,
+    .two-col,
+    .final-grid,
+    .choice-grid,
+    .branch-grid,
+    .flow-grid,
+    .logic-flow {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
+
+    .hero {
+      padding: 34px 24px;
+    }
+
+    .section {
+      padding: 28px 0;
+    }
+
+    .logic-row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .site-header {
+      padding: 18px 20px;
+    }
+
+    .site-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .dropdown-menu {
+      right: auto;
+      left: 0;
     }
   }
 
@@ -259,6 +443,30 @@
 </head>
 <body>
 <div id="top"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Laura Kentcroft</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Case Studies</button>
+
+        <div class="dropdown-menu">
+          <a href="metro-rivals.html">Metro Rivals</a>
+          <a href="design-sample.html">Design Sample</a>
+          <a href="hearthstone.html">Hearthstone</a>
+          <a href="gameplay-programming.html">Gameplay Programming Foundation</a>
+        </div>
+      </div>
+
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
+
 
   <main class="page">
     <section class="hero">
@@ -449,6 +657,28 @@
       </div>
     </section>
 <section class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Explore More</div>
+        </div>
+
+        <div>
+          <h2>Want to see the rest of my work?</h2>
+
+          <div class="explore-buttons">
+            <a href="index.html#case-studies" class="case-button accent">
+              View all case studies
+            </a>
+
+            <a href="about.html" class="case-button gold">
+              Learn more about me
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="section-heading">
         <div>
           <div class="eyebrow">Connect</div>
