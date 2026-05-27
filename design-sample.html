@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quest & Narrative Design Sample - Laura Kentcroft</title>
+<style>
+  :root {
+    --bg: #050505;
+    --panel: #101010;
+    --panel-2: #171717;
+    --text: #f4f4f4;
+    --muted: #c9c9c9;
+    --soft: #8f8f8f;
+    --line: #333333;
+    --accent: #6ee7f0;
+    --accent-2: #ffcc66;
+    --danger: #ff7a7a;
+    --green: #8bdc9b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 58px 64px 72px;
+  }
+  .hero {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 54px;
+    align-items: center;
+    border: 1px solid #1f1f1f;
+    background: radial-gradient(circle at 78% 18%, rgba(110,231,240,0.16), transparent 28%), linear-gradient(135deg, #060606 0%, #090909 64%, #111 100%);
+    padding: 52px 48px;
+    margin-bottom: 34px;
+  }
+  h1 {
+    font-size: 48px;
+    line-height: 1.05;
+    margin: 0 0 26px;
+    letter-spacing: 0.01em;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 1.18;
+    margin: 0 0 20px;
+  }
+  h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+  }
+  h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 750;
+    margin-bottom: 36px;
+  }
+  .focus {
+    color: var(--muted);
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+  .focus span { color: var(--text); font-weight: 700; }
+  p { margin: 0 0 16px; color: var(--muted); font-size: 16px; }
+  .lead { font-size: 20px; color: #e9e9e9; max-width: 760px; }
+  .small { font-size: 14px; color: var(--soft); }
+  .tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .tag {
+    border: 1px solid var(--line);
+    color: #e8e8e8;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    background: #0b0b0b;
+  }
+  .hero-card {
+    min-height: 380px;
+    border: 1px solid #242424;
+    padding: 28px;
+    background: linear-gradient(145deg, #111, #050505);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 22px 60px rgba(0,0,0,0.32);
+  }
+  .mini-title { color: var(--accent); text-transform: uppercase; font-size: 12px; letter-spacing: .16em; margin-bottom: 12px; }
+  .logic-stack { display: grid; gap: 12px; margin-top: 10px; }
+  .logic-row { display: grid; grid-template-columns: 1fr 24px 1fr; gap: 10px; align-items: center; }
+  .box {
+    border: 1px solid #383838;
+    background: #111;
+    padding: 12px 14px;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+  }
+  .arrow { text-align: center; color: var(--accent); font-weight: 800; }
+  .section {
+    padding: 44px 0;
+    border-bottom: 1px solid #202020;
+  }
+  .section-heading {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 22px;
+    margin-bottom: 24px;
+    align-items: baseline;
+  }
+  .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; font-weight: 800; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .card {
+    border: 1px solid #242424;
+    background: var(--panel);
+    padding: 26px;
+  }
+  .card.accent { border-left: 4px solid var(--accent); }
+  .card.gold { border-left: 4px solid var(--accent-2); }
+  ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  li { margin: 7px 0; }
+  .diagram {
+    border: 1px solid #252525;
+    background: #080808;
+    padding: 28px;
+    margin: 24px 0;
+  }
+  .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px 22px;
+    align-items: center;
+  }
+  .flow-box {
+    border: 1px solid #383838;
+    background: #111;
+    min-height: 72px;
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+  }
+  .flow-box.accent { border-color: rgba(110,231,240,.75); box-shadow: inset 0 0 0 1px rgba(110,231,240,.18); }
+  .flow-box.gold { border-color: rgba(255,204,102,.7); }
+  .flow-arrow { color: var(--accent); text-align: center; font-size: 22px; font-weight: 900; }
+  .branch-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 16px 0; }
+  .branch { border: 1px solid #333; background: var(--panel-2); padding: 14px; min-height: 120px; }
+  .branch strong { display: block; color: #fff; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 14px; color: var(--muted); }
+  th, td { border: 1px solid #303030; padding: 12px 13px; vertical-align: top; }
+  th { color: var(--text); background: #151515; text-align: left; }
+  td:first-child { color: #f0f0f0; font-weight: 700; width: 25%; }
+  .quote {
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    background: #0f0f0f;
+    color: #e8e8e8;
+    margin: 18px 0;
+    font-size: 18px;
+  }
+  .choice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 22px 0; }
+  .choice { border: 1px solid #303030; padding: 20px; background: #111; }
+  .choice .label { color: var(--accent-2); font-weight: 800; margin-bottom: 8px; }
+  .choice .line { color: #fff; font-size: 17px; margin-bottom: 12px; }
+  .logic-flow { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; align-items: stretch; }
+  .logic-flow .flow-box { min-height: 86px; font-size: 13px; }
+  .final-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .footer-note { margin-top: 36px; color: #777; font-size: 13px; }
+
+  .case-button {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 14px 18px;
+    border: 2px solid #f4f4f4;
+    color: #f4f4f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    background: transparent;
+  }
+
+  .case-button.accent {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .case-button.gold {
+    border-color: var(--accent-2);
+    color: var(--accent-2);
+  }
+
+  .case-button.green {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .case-button.accent:hover {
+    background: var(--accent);
+    color: #050505;
+  }
+
+  .case-button.gold:hover {
+    background: var(--accent-2);
+    color: #050505;
+  }
+
+  .case-button.green:hover {
+    background: var(--green);
+    color: #050505;
+  }
+
+  .contact-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .contact-buttons .case-button {
+    margin-top: 0;
+  }
+
+  @media print {
+    body { background: #050505; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 32px; }
+    .section { break-inside: avoid; page-break-inside: avoid; }
+    .hero { break-inside: avoid; page-break-inside: avoid; }
+    .diagram, table, .card { break-inside: avoid; page-break-inside: avoid; }
+  }
+
+  @media (max-width: 800px) {
+    .contact-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+</style>
+</head>
+<body>
+<div id="top"></div>
+
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>02 - Quest & Narrative Design Sample</h1>
+        <div class="subtitle">Interactive Storytelling, Quest Flow & Player Choice</div>
+        <div class="focus"><span>Focus areas:</span> Quest structure · Dialogue design · Character motivation · Branching choices · Progression · Rewards · Blueprint-style logic</div>
+        <p class="lead">An original, anonymised design sample showing how I approach quest design as both narrative and systems work: defining what the player does, why they care, how choices are expressed, and how the design can be implemented and tested.</p>
+        <div class="tag-row">
+          <div class="tag">Quest Design</div><div class="tag">Interactive Storytelling</div><div class="tag">Dialogue Choices</div><div class="tag">Implementation Thinking</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div>
+          <div class="mini-title">Example design flow</div>
+          <div class="logic-stack">
+            <div class="logic-row"><div class="box">Narrative Design </div><div class="arrow">→</div><div class="box">Quest Objective</div></div>
+            <div class="logic-row"><div class="box">Player Motive</div><div class="arrow">→</div><div class="box">Dialogue Choice</div></div>
+            <div class="logic-row"><div class="box">Branch State</div><div class="arrow">→</div><div class="box">Reward + Follow-Up</div></div>
+          </div>
+        </div>
+        <p class="small">This page is a portfolio-safe sample, not a reproduction of shipped content, internal documentation, or confidential project material.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">Context</div><h2>Why this sample exists</h2></div>
+      <div class="two-col">
+        <div class="card accent">
+          <h3>Confidentiality note</h3>
+          <p>This is an original, anonymised design sample created for portfolio purposes. It is informed by professional quest, systems and narrative design experience, but does not reproduce shipped content, internal documentation, confidential project details or final design work from any specific project.</p>
+        </div>
+        <div class="card gold">
+          <h3>Design challenge</h3>
+          <p>Create quest-based content that supports player motivation, progression and replayable engagement while remaining practical to implement, test, localise and maintain.</p>
+          <p>The key problem is balancing player expression with production scope: giving players meaningful choices without creating an unmanageable amount of unique content for every branch.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">Contribution</div><h2>What I would own or define</h2></div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Quest and narrative design</h3>
+          <ul>
+            <li>Quest objectives, pacing and progression requirements</li>
+            <li>Quest-giver characters with distinct motivations and end goals</li>
+            <li>Dialogue choices that express player intent and roleplay style</li>
+            <li>Branching choices, follow-up states and player-facing consequences</li>
+            <li>Player motivations such as heroism, revenge, fame, curiosity and reward-seeking</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Implementation and delivery</h3>
+          <ul>
+            <li>XP, rewards, unlocks and completion requirements</li>
+            <li>Quest logic, state tracking, edge cases and fallback states</li>
+            <li>Required assets: characters, VO, dialogue strings, UI prompts and reward data</li>
+            <li>Localisation notes, string context and tone guidance</li>
+            <li>Clear documentation for design, engineering, UI, art, audio, QA and production</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">01</div><h2>Quest flow</h2></div>
+      <p>This simplified flow shows how I structure a quest from availability through to completion and follow-up consequences.</p>
+      <div class="diagram">
+        <div class="flow-grid">
+          <div class="flow-box">Quest availability check</div><div class="flow-arrow">→</div><div class="flow-box">Player meets requirements?</div><div class="flow-box">Quest hidden or available</div>
+          <div class="flow-box">Player discovers quest giver</div><div class="flow-arrow">→</div><div class="flow-box">Intro dialogue</div><div class="flow-box">Motivation choice</div>
+        </div>
+        <div class="branch-grid">
+          <div class="branch"><strong>Heroic</strong>Player helps because it is the right thing to do.</div>
+          <div class="branch"><strong>Reward-seeking</strong>Player wants a clear material reason to engage.</div>
+          <div class="branch"><strong>Fame / status</strong>Player wants recognition or public success.</div>
+          <div class="branch"><strong>Revenge / rivalry</strong>Player is motivated by conflict or escalation.</div>
+        </div>
+        <div class="flow-grid">
+          <div class="flow-box">Objective assigned</div><div class="flow-arrow">→</div><div class="flow-box">Gameplay objective complete?</div><div class="flow-box">Return to quest giver</div>
+          <div class="flow-box">Branch-specific resolution</div><div class="flow-arrow">→</div><div class="flow-box">Grant reward</div><div class="flow-box">Update follow-up state</div>
+        </div>
+      </div>
+      <div class="card accent">
+        <h3>Design reasoning</h3>
+        <p>I use this type of structure to separate the mechanical quest path from the narrative expression layer. The core objective remains stable enough to implement, balance and test reliably, while dialogue choices allow the player to express why they are taking part.</p>
+        <p>This helps avoid uncontrolled scope expansion while still giving players a sense of agency. The player may complete the same core objective, but the tone, NPC response, reward framing or later follow-up dialogue can change based on whether they acted out of heroism, revenge, fame or reward-seeking.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">02</div><h2>Quest specification</h2></div>
+      <table>
+        <tr><th>Field</th><th>Example</th></tr>
+        <tr><td>Quest name</td><td>The Rival's Request (anonymised example)</td></tr>
+        <tr><td>Quest type</td><td>Side quest / discoverable quest</td></tr>
+        <tr><td>Quest purpose</td><td>Encourage exploration, introduce an NPC rivalry, reinforce progression goals and provide a meaningful reward choice.</td></tr>
+        <tr><td>Unlock condition</td><td>Player reaches the required level and discovers the relevant area or quest-giver.</td></tr>
+        <tr><td>Quest giver</td><td>Ambitious NPC who presents their request as helpful, but is partly motivated by ego, reputation and status.</td></tr>
+        <tr><td>NPC motivation</td><td>Wants recognition, influence and proof that they are better than a rival character.</td></tr>
+        <tr><td>Player motivation options</td><td>Heroism, revenge, fame, money / reward-seeking or curiosity.</td></tr>
+        <tr><td>Objective flow</td><td>Discover NPC - choose dialogue tone - accept objective - complete gameplay task - return to NPC - receive branch-specific resolution.</td></tr>
+        <tr><td>Branching impact</td><td>Dialogue tone changes immediately; later NPC response, follow-up text or reward framing can reflect the chosen motivation.</td></tr>
+        <tr><td>Required assets</td><td>Quest-giver character, dialogue strings, VO selection, UI prompt, objective text, reward icon/data, localisation notes and level/content requirements.</td></tr>
+        <tr><td>Edge cases</td><td>Player disconnects mid-quest, completes objectives out of order, attempts repeat completion, claims reward late or triggers hidden quest before expected progression.</td></tr>
+        <tr><td>Implementation notes</td><td>Quest state variables, availability checks, completion checks, reward grants, branch tracking and follow-up state updates.</td></tr>
+        <tr><td>Success criteria</td><td>Player understands what to do, feels motivated to continue, receives clear feedback, and sees the quest resolve in a way that reflects their chosen tone or motivation.</td></tr>
+      </table>
+      <div class="card">
+        <h3>Design reasoning</h3>
+        <p>I document quests in this level of detail because quest design sits between multiple disciplines. A quest is not only a written idea; it needs to become playable content with clear implementation rules, asset requirements, UI needs, reward logic, localisation context and testable edge cases.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">03</div><h2>Character motivation and dialogue choice</h2></div>
+      <p>The player encounters an NPC who asks for help with a task that appears community-focused. On the surface, the NPC frames the request as beneficial to everyone. Underneath, they want status, recognition and leverage over a rival.</p>
+      <table>
+        <tr><th>Character</th><th>Surface goal</th><th>Hidden / personal motive</th><th>Design purpose</th></tr>
+        <tr><td>Quest giver</td><td>Wants help completing an urgent task.</td><td>Wants recognition, fame and leverage over a rival.</td><td>Creates tension between what the NPC says and what they really want.</td></tr>
+        <tr><td>Player</td><td>Can choose why they engage.</td><td>Heroism, revenge, fame, money or curiosity.</td><td>Lets the player project motivation onto the quest instead of simply accepting an objective.</td></tr>
+        <tr><td>Rival NPC</td><td>May be affected by the outcome.</td><td>Wants to protect their reputation or position.</td><td>Creates room for later consequences or changed dialogue.</td></tr>
+      </table>
+      <div class="quote">NPC: "You're exactly the person I was hoping to see. There's a problem, and if we solve it before anyone else notices, everyone benefits."</div>
+      <div class="choice-grid">
+        <div class="choice"><div class="label">Player Choice A - Heroic</div><div class="line">"If people need help, I'm in. Tell me what needs doing."</div><p>Frames the player as altruistic and community-minded. Later dialogue can praise their reliability or sense of duty.</p></div>
+        <div class="choice"><div class="label">Player Choice B - Reward-seeking</div><div class="line">"That sounds like work. What do I get out of it?"</div><p>Lets the player express practical or self-interested motivation. The NPC becomes more transactional and foregrounds the reward.</p></div>
+        <div class="choice"><div class="label">Player Choice C - Fame / status</div><div class="line">"If this makes me look good, I'm listening."</div><p>Supports players who want recognition or public success. Follow-up dialogue can reference reputation and visibility.</p></div>
+        <div class="choice"><div class="label">Player Choice D - Revenge / rivalry</div><div class="line">"If this causes trouble for them, I'm interested."</div><p>Ties the player into existing conflict. The NPC can reveal more of their personal agenda and later dialogue can reference escalation.</p></div>
+      </div>
+      <div class="card accent">
+        <h3>Design reasoning</h3>
+        <p>These choices let players express motivation without requiring a completely separate quest for every branch. The underlying objective can remain stable, while dialogue tone, NPC response, reward framing and later consequences change.</p>
+        <p>This creates a stronger sense of roleplay while keeping the quest achievable within production constraints. It also prevents quest-givers from feeling like simple objective dispensers: each NPC has a motive, an end goal, and a reason to involve the player.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">04</div><h2>Blueprint-style quest logic</h2></div>
+      <p>This simplified implementation flow shows how I think about quest content from a logic and implementation perspective.</p>
+      <div class="diagram">
+        <div class="logic-flow">
+          <div class="flow-box">Player enters quest area</div>
+          <div class="flow-box">Check quest state</div>
+          <div class="flow-box">Meets progression requirement?</div>
+          <div class="flow-box">Enable quest-giver interaction</div>
+          <div class="flow-box">Start dialogue</div>
+          <div class="flow-box">Set branch: heroic / reward / fame / revenge</div>
+          <div class="flow-box">Assign objective</div>
+          <div class="flow-box">Track objective progress</div>
+          <div class="flow-box">Objective complete?</div>
+          <div class="flow-box">Update UI prompt or reminder</div>
+          <div class="flow-box">Return to quest giver</div>
+          <div class="flow-box">Play branch-specific resolution</div>
+          <div class="flow-box">Grant XP / reward</div>
+          <div class="flow-box">Set quest complete</div>
+          <div class="flow-box">Update follow-up state</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Design reasoning</h3>
+        <p>I think about implementation from the beginning so that quest design is not just a written concept. It needs to be trackable, testable and recoverable from edge cases.</p>
+        <p>This means considering quest state, progression requirements, branch variables, objective completion, disconnect recovery, reward timing, follow-up consequences, QA coverage, localisation context and tool or engineering support.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div class="eyebrow">Summary</div><h2>What this demonstrates</h2></div>
+      <div class="final-grid">
+        <div class="card accent">
+          <h3>Design craft</h3>
+          <ul>
+            <li>How I define what the player is asked to do and why they should care</li>
+            <li>How NPC motives, player motivations and dialogue choices shape quest tone</li>
+            <li>How choices can affect immediate response, reward framing and later consequences</li>
+          </ul>
+        </div>
+        <div class="card gold">
+          <h3>Production thinking</h3>
+          <ul>
+            <li>How I scope quest branches so they stay practical to build</li>
+            <li>How I plan assets, localisation, QA needs and implementation logic</li>
+            <li>How I make quest content clear, testable and maintainable for development</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+<section class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Connect</div>
+        </div>
+
+        <div>
+          <h2>Like my work? Let's connect!</h2>
+
+          <div class="contact-buttons">
+            <a href="mailto:laurakentcroft@gmail.com" class="case-button accent">
+              Email
+            </a>
+
+            <a href="https://www.linkedin.com/in/laura-kentcroft/" class="case-button accent" target="_blank">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

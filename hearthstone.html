@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hearthstone - Laura Kentcroft</title>
+<style>
+:root { --bg:#050505; --panel:#101010; --panel-2:#171717; --text:#f4f4f4; --muted:#c9c9c9; --soft:#8f8f8f; --line:#333333; --accent:#6ee7f0; --accent-2:#ffcc66; --green:#8bdc9b; --pink:#e6a4ff; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,Avenir,Helvetica,Arial,sans-serif; line-height:1.55; }
+.page { width:100%; min-height:100vh; padding:58px 64px 72px; }
+.hero { display:grid; grid-template-columns:0.92fr 1.08fr; gap:54px; align-items:center; border:1px solid #1f1f1f; background:radial-gradient(circle at 78% 18%, rgba(110,231,240,0.16), transparent 28%), linear-gradient(135deg,#060606 0%,#090909 64%,#111 100%); padding:52px 48px; margin-bottom:34px; }
+h1 { font-size:48px; line-height:1.05; margin:0 0 26px; letter-spacing:0.01em; }
+h2 { font-size:28px; line-height:1.18; margin:0 0 20px; }
+h3 { font-size:18px; margin:0 0 10px; }
+p { color:var(--muted); margin:0 0 14px; font-size:15px; }
+ul { margin:0; padding-left:20px; color:var(--muted); } li { margin-bottom:7px; }
+.eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:0.16em; font-size:12px; font-weight:700; margin-bottom:12px; }
+.kicker { font-size:18px; color:var(--text); font-weight:700; margin-bottom:22px; }
+.tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+.tag { border:1px solid #333; background:#0d0d0d; color:var(--muted); padding:8px 11px; border-radius:999px; font-size:13px; }
+.hero-card { background:rgba(255,255,255,0.035); border:1px solid #252525; padding:26px; }
+.mini-title { color:var(--accent); text-transform:uppercase; letter-spacing:0.22em; font-size:13px; font-weight:800; margin-bottom:26px; }
+.logic-stack { display:grid; gap:18px; }
+.logic-row { display:grid; grid-template-columns:1fr 38px 1fr; gap:18px; align-items:center; }
+.box { border:1px solid #3a3a3a; background:rgba(255,255,255,0.015); color:var(--text); min-height:66px; display:flex; align-items:center; justify-content:center; text-align:center; padding:12px 18px; font-size:17px; font-weight:700; }
+.arrow { color:var(--accent); font-size:26px; text-align:center; }
+.small { color:var(--soft); font-size:13px; margin-top:28px; margin-bottom:0; }
+.section { border:1px solid #1f1f1f; background:var(--panel); padding:38px 40px; margin-bottom:28px; }
+.section.alt { background:var(--panel-2); }
+.section-heading { display:grid; grid-template-columns:0.22fr 0.78fr; gap:24px; margin-bottom:24px; }
+.section-heading h2 { margin:0; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.card { background:#0b0b0b; border:1px solid #282828; padding:22px; min-height:100px; }
+.card.accent { border-top:3px solid var(--accent); } .card.gold { border-top:3px solid var(--accent-2); } .card.green { border-top:3px solid var(--green); } .card.pink { border-top:3px solid var(--pink); }
+.card .label { color:var(--accent); font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:0.10em; margin-bottom:8px; }
+.decision-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.decision { background:#0b0b0b; border:1px solid #292929; padding:22px; }
+.decision .label { color:var(--accent-2); font-size:13px; text-transform:uppercase; letter-spacing:0.12em; font-weight:800; margin-bottom:8px; }
+.decision .line { color:var(--text); font-weight:800; font-size:19px; margin-bottom:8px; }
+.process-list { display:grid; gap:14px; }
+.process-item { display:grid; grid-template-columns:50px 1fr; gap:16px; background:#0b0b0b; border:1px solid #282828; padding:18px; }
+.number { width:40px; height:40px; border-radius:50%; border:1px solid var(--accent); display:flex; align-items:center; justify-content:center; font-weight:800; color:var(--accent); }
+.diagram { background:#080808; border:1px solid #2c2c2c; padding:24px; margin-bottom:24px; overflow-x:auto; }
+.flow-grid { display:grid; grid-template-columns:1fr 40px 1fr 40px 1fr; gap:12px; align-items:center; min-width:760px; }
+.flow-box { border:1px solid #333; background:#111; padding:16px; text-align:center; font-weight:700; min-height:74px; display:flex; align-items:center; justify-content:center; }
+.flow-box.accent { border-color:var(--accent); color:var(--accent); } .flow-box.gold { border-color:var(--accent-2); color:var(--accent-2); } .flow-box.green { border-color:var(--green); color:var(--green); }
+.flow-arrow { text-align:center; color:var(--soft); font-size:26px; }
+table { width:100%; border-collapse:collapse; margin-top:16px; font-size:14px; color:var(--muted); } th,td { border:1px solid #333; padding:12px 14px; vertical-align:top; } th { color:var(--text); background:#111; text-align:left; }
+.final-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.footer-note { color:var(--soft); font-size:12px; margin-top:28px; }
+@media print { body { background:#050505; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .page { padding:34px; } .section,.hero { break-inside:avoid; } }
+@media (max-width:900px) { .page { padding:26px 18px; } .hero,.section-heading,.two-col,.grid,.decision-grid,.final-grid { grid-template-columns:1fr; } h1 { font-size:36px; } .hero { padding:34px 24px; } .section { padding:28px 22px; } .logic-row { grid-template-columns:1fr; gap:10px; } .arrow { transform:rotate(90deg); } }
+
+.case-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border: 2px solid #f4f4f4;
+  color: #f4f4f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  background: transparent;
+}
+
+.case-button.accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.case-button.gold {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.case-button.green {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.case-button.pink {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.case-button.accent:hover {
+  background: var(--accent);
+  color: #050505;
+}
+
+.case-button.gold:hover {
+  background: var(--accent-2);
+  color: #050505;
+}
+
+.case-button.green:hover {
+  background: var(--green);
+  color: #050505;
+}
+
+.case-button.pink:hover {
+  background: var(--pink);
+  color: #050505;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.contact-buttons .case-button {
+  margin-top: 0;
+}
+
+@media (max-width: 800px) {
+  .contact-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+</style>
+</head>
+<body>
+<div id="top"></div>
+<main class="page">
+<section class="hero"><div><div class="eyebrow">Case Study</div><h1>03 - Hearthstone</h1><div class="kicker">UI/UX, Player Flow & Data-Informed Iteration</div><p>A case study showing how I worked at the intersection of design, UX and implementation, supporting player-facing flows, documentation, analysis and implementation within a large live-game environment.</p><div class="tags"><span class="tag">Shop UI/UX</span><span class="tag">Player flow</span><span class="tag">Telemetry</span><span class="tag">PC/Mobile</span><span class="tag">AAA codebase</span><span class="tag">Implementation</span></div></div><div class="hero-card"><div class="mini-title">Player flow improvement loop</div><div class="logic-stack"><div class="logic-row"><div class="box">Player Friction</div><div class="arrow">→</div><div class="box">Metrics + Telemetry Review</div></div><div class="logic-row"><div class="box">UX / Design Proposal</div><div class="arrow">→</div><div class="box">Documentation + Alignment</div></div><div class="logic-row"><div class="box">Implementation Support</div><div class="arrow">→</div><div class="box">Testing + Design Iteration</div></div></div><p class="small">Some details are kept high-level due to project and co-development confidentiality.</p></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Overview</div></div><div><h2>Design, UX and implementation within a live AAA codebase</h2></div></div><div class="two-col"><div class="card accent"><h3>Role / context</h3><p><strong>Role:</strong> Programmer / Junior Designer<br><strong>Studio:</strong> Third Kind Games<br><strong>Project:</strong> Hearthstone (Blizzard co-dev) and unannounced AAA work</p></div><div class="card gold"><h3>Focus areas</h3><p>Shop UI/UX, player flow, telemetry-informed design, PC/mobile implementation, documentation, technical evaluations, shared-codebase collaboration and code/design review.</p></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">The Design Challenge</div></div><div><h2>Improve clarity, trust and flow in a player-facing shop experience</h2></div></div><p>A shop flow needs to be easy to understand, trustworthy, efficient and aligned with player expectations. The work required balancing ideal player experience with live-game constraints, established UI patterns, platform differences and technical implementation realities.</p><div class="grid"><div class="card accent"><h3>Player clarity</h3><p>Can players quickly understand what is available, what each option means and what action they are about to take?</p></div><div class="card gold"><h3>Low-friction flow</h3><p>Is the purchase journey clear, efficient and free from unnecessary hesitation or confusion?</p></div><div class="card green"><h3>Technical feasibility</h3><p>How can design improvements work within existing technical, mobile, PC and live-game constraints?</p></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">My Contribution</div></div><div><h2>Where design thinking met implementation</h2></div></div><p>I contributed to Hearthstone across design and implementation. This work was especially valuable because it sat between product design, UX, technical implementation and live game development.</p><div class="grid"><div class="card accent"><div class="label">01</div><h3>Shop UI/UX and player flow</h3><p>Supported the redesign of shop UI/UX and player flow, focusing on clarity, usability and a smoother purchasing experience.</p></div><div class="card gold"><div class="label">02</div><h3>Telemetry-informed design</h3><p>Analysed player metrics and telemetry to identify underperforming features, friction points and opportunities for design improvement.</p></div><div class="card green"><div class="label">03</div><h3>Documentation</h3><p>Created GDDs, TDDs and supporting documentation to communicate design intent, player flow, implementation details and expected outcomes.</p></div><div class="card accent"><div class="label">04</div><h3>Implementation</h3><p>Implemented features and systems for Hearthstone across PC and mobile platforms within a large shared AAA codebase.</p></div><div class="card gold"><div class="label">05</div><h3>Quest and level support</h3><p>Supported the creation of quest and level content for an unannounced AAA title, including objective flow, level structure, gameplay beats, documentation and asset requirements.</p></div><div class="card green"><div class="label">06</div><h3>Research and review</h3><p>Created competitor research and technical evaluations, including SDK reviews, then presented findings to support informed team decisions.</p></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Design Decisions</div></div><div><h2>Principles that shaped the work</h2></div></div><div class="decision-grid"><div class="decision"><div class="label">01 - Reduce friction</div><div class="line">Make the journey straightforward.</div><p>The player journey should have fewer unclear steps, stronger signposting and a clear path from intent to action.</p></div><div class="decision"><div class="label">02 - Improve clarity</div><div class="line">Make content understandable at a glance.</div><p>Shop content, states, options and purchase steps needed to communicate clearly without relying on guesswork.</p></div><div class="decision"><div class="label">03 - Respect platform differences</div><div class="line">Design for PC and mobile contexts.</div><p>UI and flow decisions needed to consider different inputs, screen spaces, expectations and implementation constraints.</p></div><div class="decision"><div class="label">04 - Use evidence</div><div class="line">Let data challenge assumptions.</div><p>Telemetry and player metrics helped move the conversation from what we thought might be happening to what the data suggested needed attention.</p></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Process</div></div><div><h2>How I approached player-facing UX improvements</h2></div></div><div class="diagram"><div class="flow-grid"><div class="flow-box">Analyse current flow</div><div class="flow-arrow">→</div><div class="flow-box">Review telemetry and metrics</div><div class="flow-arrow">→</div><div class="flow-box">Compare market patterns</div><div class="flow-box">Document proposed changes</div><div class="flow-arrow">→</div><div class="flow-box">Support implementation</div><div class="flow-arrow">→</div><div class="flow-box">Test and iterate</div></div></div><div class="process-list"><div class="process-item"><div class="number">1</div><div><h3>Analyse the current flow</h3><p>Reviewed the existing journey to identify where clarity, friction or comprehension could be improved.</p></div></div><div class="process-item"><div class="number">2</div><div><h3>Use telemetry and player metrics</h3><p>Looked at data to understand which areas were underperforming and where design attention could have the most impact.</p></div></div><div class="process-item"><div class="number">3</div><div><h3>Compare against market expectations</h3><p>Conducted competitor and player-focused research to understand common patterns, expectations and best practices.</p></div></div><div class="process-item"><div class="number">4</div><div><h3>Document proposed changes</h3><p>Created clear documentation explaining design intent, player flow, implementation details and expected outcomes.</p></div></div><div class="process-item"><div class="number">5</div><div><h3>Support implementation</h3><p>Contributed directly to implementation, using my programming background to understand technical impact and communicate well with engineers.</p></div></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Implementation & Collaboration</div></div><div><h2>Balancing player flow with live-game constraints</h2></div></div><div class="two-col"><div class="card accent"><h3>Implementation and review</h3><p>I worked closely with designers and engineers, contributing to both design and implementation. This gave me a strong understanding of how UX decisions move from documentation into a live codebase.</p></div><div class="card gold"><h3>Remote co-development</h3><p>I collaborated remotely and asynchronously with US-based partner studios, using clear documentation, written updates and cross-time-zone communication to support alignment.</p></div></div></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Iteration</div></div><div><h2>How feedback shaped the work</h2></div></div><table><tr><th>Iteration input</th><th>How it shaped the work</th></tr><tr><td>Telemetry and metrics</td><td>Highlighted underperforming areas and player friction.</td></tr><tr><td>Design review</td><td>Improved clarity, flow and design consistency.</td></tr><tr><td>Engineering feedback</td><td>Clarified constraints, risk and implementation effort.</td></tr><tr><td>Platform considerations</td><td>Helped adapt flows for PC and mobile expectations.</td></tr><tr><td>Stakeholder discussion</td><td>Aligned proposed changes with live-game goals and priorities.</td></tr><tr><td>Implementation testing</td><td>Validated behaviour within the constraints of a large shared codebase.</td></tr></table></section>
+<section class="section"><div class="section-heading"><div><div class="eyebrow">Lessons Learned</div></div><div><h2>Key takeaways</h2></div></div><div class="final-grid"><div class="card green"><h3>What this strengthened</h3><ul><li>Product and UX thinking for live games.</li><li>Data-informed design decision making.</li><li>Documentation that supports shared understanding.</li><li>Technical confidence in design conversations.</li></ul></div><div class="card green"><h3>How it shaped my design style</h3><p>This work reinforced how important clarity, trust and data-informed iteration are in player-facing systems, especially in live games.</p><p>It also showed how useful my programming background is in design conversations: I can understand implementation constraints, communicate with engineers and help make design choices that are both player-focused and technically achievable.</p></div></div></section>
+<section class="section">
+  <div class="section-heading">
+    <div>
+      <div class="eyebrow">Connect</div>
+    </div>
+
+    <div>
+      <h2>Like my work? Let's connect!</h2>
+
+      <div class="contact-buttons">
+        <a href="mailto:laurakentcroft@gmail.com" class="case-button accent">
+          Email
+        </a>
+
+        <a href="https://www.linkedin.com/in/laura-kentcroft/" class="case-button accent" target="_blank">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>
