@@ -2,591 +2,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Laura Kentcroft - Portfolio Home</title>
-
-<style>
-:root {
-  --bg:#050505;
-  --panel:#101010;
-  --panel-2:#171717;
-  --text:#f4f4f4;
-  --muted:#c9c9c9;
-  --soft:#8f8f8f;
-  --line:#333333;
-  --accent:#6ee7f0;
-  --accent-2:#ffcc66;
-  --green:#8bdc9b;
-  --pink:#e6a4ff;
-}
-
-* {
-  box-sizing:border-box;
-}
-
-html,
-body {
-  margin:0;
-  padding:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,Avenir,Helvetica,Arial,sans-serif;
-  line-height:1.55;
-  overflow-x:hidden;
-}
-
-a {
-  color:inherit;
-}
-
-.page {
-  width:100%;
-  min-height:100vh;
-  padding:42px 64px 72px;
-}
-
-.hero {
-  display:grid;
-  grid-template-columns:0.92fr 1.08fr;
-  gap:54px;
-  align-items:start;
-  border:1px solid #1f1f1f;
-  background:radial-gradient(circle at 78% 18%, rgba(110,231,240,0.16), transparent 28%),
-             linear-gradient(135deg,#060606 0%,#090909 64%,#111 100%);
-  padding:52px 48px;
-  margin-bottom:34px;
-}
-
-h1 {
-  font-size:52px;
-  line-height:1.05;
-  margin:0 0 26px;
-  letter-spacing:0.01em;
-}
-
-h2 {
-  font-size:30px;
-  line-height:1.18;
-  margin:0 0 20px;
-}
-
-h3 {
-  font-size:20px;
-  margin:0 0 10px;
-}
-
-p {
-  color:var(--muted);
-  margin:0 0 14px;
-  font-size:15px;
-}
-
-ul {
-  margin:0;
-  padding-left:20px;
-  color:var(--muted);
-}
-
-li {
-  margin-bottom:7px;
-}
-
-.eyebrow {
-  color:var(--accent);
-  text-transform:uppercase;
-  letter-spacing:0.16em;
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:12px;
-}
-
-.kicker {
-  font-size:20px;
-  color:var(--text);
-  font-weight:700;
-  margin-bottom:22px;
-}
-
-.tags {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:26px;
-}
-
-.tag {
-  border:1px solid #333;
-  background:#0d0d0d;
-  color:var(--muted);
-  padding:8px 11px;
-  border-radius:999px;
-  font-size:13px;
-}
-
-.hero-card {
-  background:rgba(255,255,255,0.035);
-  border:1px solid #252525;
-  padding:26px;
-}
-
-.mini-title {
-  color:var(--accent);
-  text-transform:uppercase;
-  letter-spacing:0.22em;
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:26px;
-}
-
-.logic-stack {
-  display:grid;
-  gap:18px;
-}
-
-.logic-row {
-  display:grid;
-  grid-template-columns:1fr 38px 1fr;
-  gap:18px;
-  align-items:center;
-}
-
-.box {
-  border:1px solid #3a3a3a;
-  background:rgba(255,255,255,0.015);
-  color:var(--text);
-  min-height:66px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:12px 18px;
-  font-size:17px;
-  font-weight:700;
-}
-
-.arrow {
-  color:var(--accent);
-  font-size:26px;
-  text-align:center;
-}
-
-.small {
-  color:var(--soft);
-  font-size:13px;
-  margin-top:28px;
-  margin-bottom:0;
-}
-
-.section {
-  border:1px solid #1f1f1f;
-  background:var(--panel);
-  padding:38px 40px;
-  margin-bottom:28px;
-}
-
-.section.alt {
-  background:var(--panel-2);
-}
-
-.section-heading {
-  display:grid;
-  grid-template-columns:150px 1fr;
-  gap:22px;
-  margin-bottom:24px;
-  align-items:baseline;
-}
-
-.section-heading h2 {
-  margin:0;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.case-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.two-col {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.card {
-  background:#0b0b0b;
-  border:1px solid #282828;
-  padding:24px;
-  min-height:100px;
-}
-
-.card.accent {
-  border-top:3px solid var(--accent);
-}
-
-.card.gold {
-  border-top:3px solid var(--accent-2);
-}
-
-.card.green {
-  border-top:3px solid var(--green);
-}
-
-.card.pink {
-  border-top:3px solid var(--pink);
-}
-
-.card .label {
-  color:var(--accent);
-  font-weight:800;
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:0.10em;
-  margin-bottom:8px;
-}
-
-.card-number {
-  color:var(--accent);
-  font-size:14px;
-  font-weight:800;
-  letter-spacing:0.14em;
-  margin-bottom:14px;
-}
-
-.card-title {
-  font-size:24px;
-  line-height:1.1;
-  color:var(--text);
-  font-weight:800;
-  margin-bottom:10px;
-}
-
-.card-subtitle {
-  color:var(--text);
-  font-size:17px;
-  font-weight:700;
-  margin-bottom:18px;
-}
-
-.focus {
-  color:var(--soft);
-  font-size:13px;
-  margin-bottom:16px;
-}
-
-.credit-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.credit {
-  background:#0b0b0b;
-  border:1px solid #282828;
-  padding:16px;
-  min-height:86px;
-}
-
-.credit strong {
-  display:block;
-  color:var(--text);
-  font-size:16px;
-  margin-bottom:6px;
-}
-
-.credit span {
-  color:var(--soft);
-  font-size:13px;
-}
-
-
-
-.footer-note {
-  color:var(--soft);
-  font-size:12px;
-  margin-top:28px;
-}
-
-.case-button {
-  display:inline-block;
-  margin-top:22px;
-  padding:14px 18px;
-  border:2px solid #f4f4f4;
-  color:#f4f4f4;
-  text-decoration:none;
-  text-transform:uppercase;
-  font-weight:800;
-  font-size:13px;
-  letter-spacing:0.04em;
-  background:transparent;
-}
-
-.case-button.accent {
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-.case-button.gold {
-  border-color:var(--accent-2);
-  color:var(--accent-2);
-}
-
-.case-button.green {
-  border-color:var(--green);
-  color:var(--green);
-}
-
-.case-button.pink {
-  border-color:var(--pink);
-  color:var(--pink);
-}
-
-.case-button.accent:hover {
-  background:var(--accent);
-  color:#050505;
-  text-decoration:none;
-}
-
-.case-button.gold:hover {
-  background:var(--accent-2);
-  color:#050505;
-  text-decoration:none;
-}
-
-.case-button.green:hover {
-  background:var(--green);
-  color:#050505;
-  text-decoration:none;
-}
-
-.case-button.pink:hover {
-  background:var(--pink);
-  color:#050505;
-  text-decoration:none;
-}
-
-.contact-buttons {
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-top:22px;
-}
-
-.contact-buttons .case-button {
-  margin-top:0;
-}
-
-/* HEADER / NAVIGATION */
-.site-header {
-  width:100%;
-  background:rgba(5, 5, 5, 0.96);
-  border-bottom:1px solid #202020;
-  padding:22px 64px;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-
-.site-nav {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:32px;
-}
-
-.site-logo {
-  color:var(--text);
-  font-size:16px;
-  font-weight:900;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  text-decoration:none;
-  white-space:nowrap;
-}
-
-.site-logo:hover {
-  color:var(--accent);
-  text-decoration:none;
-}
-
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-
-.nav-links a,
-.dropdown-toggle {
-  color:var(--text);
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:0.10em;
-  text-transform:uppercase;
-  text-decoration:none;
-  background:none;
-  border:none;
-  padding:0;
-  font-family:inherit;
-}
-
-.nav-links a:hover,
-.dropdown:hover .dropdown-toggle {
-  color:var(--accent);
-  text-decoration:none;
-}
-
-.dropdown {
-  position:relative;
-}
-
-.dropdown-toggle {
-  cursor:default;
-}
-
-.dropdown-menu {
-  display:none;
-  position:absolute;
-  top:100%;
-  right:0;
-  min-width:300px;
-  background:#0b0b0b;
-  border:1px solid #282828;
-  padding:10px 0;
-  z-index:1001;
-}
-
-.dropdown::after {
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:100%;
-  height:12px;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-  display:block;
-}
-
-.dropdown-menu a {
-  display:block;
-  padding:12px 18px;
-  color:var(--muted);
-  font-size:12px;
-  letter-spacing:0.08em;
-  white-space:nowrap;
-  text-decoration:none;
-}
-
-.dropdown-menu a:hover {
-  color:var(--accent);
-  background:#111;
-  text-decoration:none;
-}
-
-#case-studies {
-  scroll-margin-top:110px;
-}
-
-@media print {
-  body {
-    background:#050505;
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Laura Kentcroft</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #101010;
+      --panel-2: #171717;
+      --text: #f4f4f4;
+      --muted: #c9c9c9;
+      --soft: #8f8f8f;
+      --line: #333333;
+      --accent: #6ee7f0;
+      --accent-2: #ffcc66;
+      --green: #8bdc9b;
+      --pink: #e6a4ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 42px 64px 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 54px;
+      align-items: center;
+      border: 1px solid #1f1f1f;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(110, 231, 240, 0.16), transparent 28%),
+        linear-gradient(135deg, #060606 0%, #090909 64%, #111 100%);
+      padding: 52px 48px;
+      margin-bottom: 34px;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.05;
+      margin: 0 0 26px;
+      letter-spacing: 0.01em;
+    }
+
+    h2 {
+      font-size: 30px;
+      line-height: 1.18;
+      margin: 0 0 20px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin: 0 0 10px;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 15px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .kicker {
+      font-size: 18px;
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .tag {
+      border: 1px solid #333;
+      background: #0d0d0d;
+      color: var(--muted);
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid #252525;
+      padding: 30px;
+    }
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.profile-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+  border: 2px solid var(--accent);
+}
+
+.profile-copy blockquote {
+  margin: 0;
+}
+
+.profile-copy p {
+  margin-top: 22px;
+}
+    @media (max-width: 900px) {
+  .profile-card {
+    grid-template-columns: 1fr;
   }
 
-  .page {
-    padding:34px;
-  }
-
-  .section,
-  .hero {
-    break-inside:avoid;
+  .profile-photo {
+    width: 200px;
+    height: 200px;
   }
 }
 
-@media (max-width:900px) {
-  .page {
-    padding:26px 18px;
+
+    .hero-card blockquote {
+      margin: 0;
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .hero-card p {
+      margin-top: 22px;
+      margin-bottom: 0;
+    }
+
+    .section {
+      border: 1px solid #1f1f1f;
+      background: var(--panel);
+      padding: 38px 40px;
+      margin-bottom: 28px;
+    }
+
+    .section.alt { background: var(--panel-2); }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      margin-bottom: 24px;
+      align-items: baseline;
+    }
+
+    .section-heading h2 { margin: 0; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #0b0b0b;
+      border: 1px solid #282828;
+      padding: 22px;
+      min-height: 100px;
+    }
+
+    .card.accent { border-top: 3px solid var(--accent); }
+    .card.gold { border-top: 3px solid var(--accent-2); }
+    .card.green { border-top: 3px solid var(--green); }
+    .card.pink { border-top: 3px solid var(--pink); }
+
+    .card .label {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      margin-bottom: 8px;
+    }
+
+    .section-copy {
+      margin-top: 18px;
+      max-width: 900px;
+    }
+
+    .values-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .value-pill {
+      border: 1px solid #2d2d2d;
+      background: #0b0b0b;
+      padding: 18px;
+      text-align: center;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .contact-card {
+      background:
+        radial-gradient(circle at top right, rgba(110, 231, 240, 0.10), transparent 32%),
+        #0b0b0b;
+      border: 1px solid #282828;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-card p { margin-bottom: 0; }
+
+    .button {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--text);
+      padding: 12px 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      background: rgba(110, 231, 240, 0.08);
+      text-decoration: none;
+    }
+
+    .case-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 18px;
+      border: 2px solid #f4f4f4;
+      color: #f4f4f4;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      background: transparent;
+    }
+
+    .case-button.accent {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .case-button.gold {
+      border-color: var(--accent-2);
+      color: var(--accent-2);
+    }
+
+    .case-button.green {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .case-button.pink {
+      border-color: var(--pink);
+      color: var(--pink);
+    }
+
+    .case-button.accent:hover {
+      background: var(--accent);
+      color: #050505;
+      text-decoration: none;
+    }
+
+    .case-button.gold:hover {
+      background: var(--accent-2);
+      color: #050505;
+      text-decoration: none;
+    }
+
+    .case-button.green:hover {
+      background: var(--green);
+      color: #050505;
+      text-decoration: none;
+    }
+
+    .case-button.pink:hover {
+      background: var(--pink);
+      color: #050505;
+      text-decoration: none;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .contact-buttons .case-button {
+      margin-top: 0;
+    }
+
+    @media print {
+      body {
+        background: #050505;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page { padding: 34px; }
+      .section, .hero { break-inside: avoid; }
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 26px 18px; }
+      .hero,
+      .section-heading,
+      .two-col,
+      .grid,
+      .values-list {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { font-size: 38px; }
+      h2 { font-size: 26px; }
+      .hero { padding: 34px 24px; }
+      .section { padding: 28px 22px; }
+      .contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+  .contact-section {
+  border: 1px solid #2a2a2a;
+  background: radial-gradient(circle at top right, rgba(94, 231, 240, 0.08), transparent 35%),
+              #080808;
+  padding: 52px;
+  margin-bottom: 28px;
+}
+
+.contact-content {
+  max-width: 850px;
+}
+
+.contact-content h2 {
+  margin: 12px 0 22px;
+  font-size: 38px;
+  line-height: 1.1;
+  max-width: 760px;
+}
+
+.contact-content p {
+  font-size: 19px;
+  line-height: 1.55;
+  margin-bottom: 26px;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .contact-section {
+    padding: 32px 24px;
   }
 
-  .hero,
-  .section-heading,
-  .two-col,
-  .grid,
-  .case-grid,
-  .final-grid {
-    grid-template-columns:1fr;
+  .contact-content h2 {
+    font-size: 30px;
   }
 
-  .credit-grid {
-    grid-template-columns:1fr 1fr;
-  }
-
-  h1 {
-    font-size:38px;
-  }
-
-  .hero {
-    padding:34px 24px;
-  }
-
-  .section {
-    padding:28px 22px;
-  }
-
-  .logic-row {
-    grid-template-columns:1fr;
-    gap:10px;
-  }
-
-  .arrow {
-    transform:rotate(90deg);
+  .contact-content p {
+    font-size: 17px;
   }
 }
 
-@media (max-width:800px) {
-  .site-header {
-    padding:18px 20px;
-  }
+    .explore-buttons {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
 
-  .site-nav {
-    flex-direction:column;
-    align-items:flex-start;
-    gap:16px;
-  }
+    .explore-buttons .case-button {
+      margin-top: 0;
+    }
 
-  .nav-links {
-    flex-wrap:wrap;
-    gap:18px;
-  }
+    /* HEADER / NAVIGATION */
+    .site-header {
+      width: 100%;
+      background: rgba(5, 5, 5, 0.96);
+      border-bottom: 1px solid #202020;
+      padding: 22px 64px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-  .dropdown-menu {
-    right:auto;
-    left:0;
-  }
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
 
-  .contact-buttons {
-    flex-direction:column;
-    align-items:flex-start;
-  }
-}
+    .site-logo {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-@media (max-width:560px) {
-  .credit-grid {
-    grid-template-columns:1fr;
-  }
-}
+    .site-logo:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a,
+    .dropdown-toggle {
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    .nav-links a:hover,
+    .dropdown:hover .dropdown-toggle {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle {
+      cursor: default;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 300px;
+      background: #0b0b0b;
+      border: 1px solid #282828;
+      padding: 10px 0;
+      z-index: 1001;
+    }
+
+    .dropdown::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 12px;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 18px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      color: var(--accent);
+      background: #111;
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .site-header {
+        padding: 18px 20px;
+      }
+
+      .site-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .dropdown-menu {
+        right: auto;
+        left: 0;
+      }
+
+      .explore-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
 </style>
 </head>
-
 <body>
 <div id="top"></div>
 
@@ -612,179 +609,177 @@ li {
     </div>
   </nav>
 </header>
-
-<main class="page">
-  <section class="hero">
-    <div>
-      <div class="eyebrow">Portfolio</div>
-      <h1>Hi, I'm Laura Kentcroft.</h1>
-      <div class="kicker">Gameplay · Systems · Technical · Player Experience</div>
-      <p>I design player-facing systems that are creative, readable and technically achievable. My background spans gameplay programming, multiplayer systems, Unreal implementation, UI/UX, LiveOps, economy design, feature ownership and cross-discipline collaboration across indie, AA and AAA projects.</p>
-      <p>I’m especially interested in the space between design intent, technical implementation and player experience - turning complex ideas into systems that feel clear, fair and satisfying to play.</p>
-
-      <div class="tags">
-        <span class="tag">Gameplay</span>
-        <span class="tag">Systems</span>
-        <span class="tag">Technical Design</span>
-        <span class="tag">Player Experience</span>
-        <span class="tag">Unreal</span>
-        <span class="tag">LiveOps</span>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <div class="mini-title">Design approach</div>
-
-      <div class="logic-stack">
-        <div class="logic-row">
-          <div class="box">Design Intent</div>
-          <div class="arrow">→</div>
-          <div class="box">Technical Implementation</div>
-        </div>
-
-        <div class="logic-row">
-          <div class="box">Player Experience</div>
-          <div class="arrow">→</div>
-          <div class="box">Readable Systems</div>
-        </div>
-
-        <div class="logic-row">
-          <div class="box">Documentation</div>
-          <div class="arrow">→</div>
-          <div class="box">Iteration</div>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">About</div>
+        <h1>About Me</h1>
+        <div class="kicker">Game Designer, creative thinker and former programmer</div>
+        <p>
+          I’m a Game Designer with a background in programming, currently focused on gameplay, systems, technical design and player experience. I enjoy working on features that sit between creative design and practical implementation; turning ideas into systems that are clear, achievable and satisfying for players.
+        </p>
+        <p>
+          I’m especially interested in gameplay systems, quests, narrative, progression, player motivation and the small usability details that make games feel intuitive.
+        </p>
+        <div class="tags">
+          <span class="tag">Game Design</span>
+          <span class="tag">Systems</span>
+          <span class="tag">Technical Design</span>
+          <span class="tag">Player Experience</span>
+          <span class="tag">Gameplay</span>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="hero-card profile-card">
+  <img src="images/laura-photo.png" alt="Photo of Laura Kentcroft" class="profile-photo">
 
-  <section class="section" id="case-studies">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">Featured Case Studies</div>
+  <div class="profile-copy">
+    <blockquote>
+      I like designing practical, player-focused systems that make sense creatively and technically.
+    </blockquote>
+
+    <p>
+      My programming background helps me understand implementation constraints, communicate clearly with engineers and design features that are more likely to survive contact with production.
+    </p>
+  </div>
+</div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><div class="eyebrow">My Journey</div></div>
+        <div><h2>My Journey Into Game Design</h2></div>
       </div>
 
-      <div>
-        <h2>Selected work across design, implementation and player experience</h2>
-      </div>
-    </div>
+      <div class="two-col">
+        <div class="card accent">
+          <h3>Where it started</h3>
+          <p>
+            It all began as a child when I got my first games on the Sega Mega Drive. Since then, I've had a real enthusiasm for games and wanted to understand how things worked under the hood.
+          </p>
+        </div>
 
-    <div class="case-grid">
-      <div class="card accent">
-        <div class="card-number">01</div>
-        <div class="card-title">Metro Rivals</div>
-        <div class="card-subtitle">Gameplay, Systems & Feature Ownership</div>
-        <p class="focus"><strong>Focus areas:</strong> Gameplay systems · Economy · LiveOps · Vehicles · Movement · Player experience · Design leadership</p>
-        <p>A case study showing how I owned gameplay and systems features from concept through documentation, implementation, balancing and iteration, while supporting cross-team alignment and Lead Designer responsibilities.</p>
-
-        <a href="metro-rivals.html" class="case-button accent">
-          Explore Metro Rivals
-        </a>
+        <div class="card gold">
+          <h3>How I moved into development</h3>
+          <p>
+            I started by joining the School of Code bootcamp and learning full stack development, whilst teaching myself C++ and C# in the evenings.
+          </p>
+        </div>
       </div>
 
-      <div class="card gold">
-        <div class="card-number">02</div>
-        <div class="card-title">Quest & Narrative Design Example</div>
-        <div class="card-subtitle">Interactive Storytelling, Quest Flow & Player Choice</div>
-        <p class="focus"><strong>Focus areas:</strong> Quest structure · Dialogue design · Character motivation · Branching choices · Progression · Rewards · Blueprint-style logic</p>
-        <p>An original, anonymised design sample showing how I approach quest design as both narrative and systems work: defining what the player does, why they care, how choices are expressed, and how the design can be implemented and tested.</p>
+      <p class="section-copy">
+        That programming background helps me design with feasibility in mind. I enjoy working across the full life of a feature, from early ideas, research and references through to documentation, prototyping, implementation, balancing, testing, feedback and iteration.
+      </p>
+    </section>
 
-        <a href="design-sample.html" class="case-button gold">
-          Explore Design Sample
-        </a>
+    <section class="section alt">
+      <div class="section-heading">
+        <div><div class="eyebrow">Design Approach</div></div>
+        <div><h2>How I Approach Design</h2></div>
       </div>
 
-      <div class="card green">
-        <div class="card-number">03</div>
-        <div class="card-title">Hearthstone</div>
-        <div class="card-subtitle">Shop UI/UX, Player Flow & Data-Informed Iteration</div>
-        <p class="focus"><strong>Focus areas:</strong> UI/UX · Player flow · Telemetry · Feature implementation · AAA codebase · Cross-discipline documentation</p>
-        <p>A case study focused on improving a player-facing shop experience, using design analysis, player metrics, documentation and implementation awareness to support clearer purchasing flows.</p>
+      <div class="grid">
+        <div class="card accent">
+          <div class="label">01</div>
+          <h3>Start with the player</h3>
+          <p>
+            My design approach is practical, collaborative and player-focused. I try to start with the player experience: what should the player understand, feel, choose or achieve?
+          </p>
+        </div>
 
-        <a href="hearthstone.html" class="case-button green">
-          Explore Hearthstone
-        </a>
+        <div class="card gold">
+          <div class="label">02</div>
+          <h3>Understand the system</h3>
+          <p>
+            From there, I think about how the system works, how it connects to the wider game, what constraints the team is working within, and how the feature can be communicated clearly.
+          </p>
+        </div>
+
+        <div class="card green">
+          <div class="label">03</div>
+          <h3>Keep it achievable</h3>
+          <p>
+            I care about making designs that are creative, understandable and achievable for the teams building them.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="card pink">
-        <div class="card-number">04</div>
-        <div class="card-title">Gameplay Programming Foundation</div>
-        <div class="card-subtitle">Multiplayer, Core Gameplay Systems & PvP</div>
-        <p class="focus"><strong>Focus areas:</strong> Multiplayer · Co-op · Matchmaking · Checkpoint systems · Combat · Unreal Engine · C++ · Blueprints</p>
-        <p>A case study exploring how my gameplay programming background shaped my approach to technical design, systems thinking and collaboration with engineering teams.</p>
-
-        <a href="gameplay-programming.html" class="case-button pink">
-          Explore Gameplay Programming
-        </a>
+    <section class="section">
+      <div class="section-heading">
+        <div><div class="eyebrow">Inspiration</div></div>
+        <div><h2>What Inspires My Work</h2></div>
       </div>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">Projects and Credits</div>
-      </div>
-
-      <div>
-        <h2>Games and projects I’ve worked across</h2>
-      </div>
-    </div>
-
-    <p>Throughout my career, I have worked on multiple games titles across indie, AA, and AAA as both a programmer and designer.</p>
-
-    <div class="credit-grid">
-      <div class="credit"><strong>Metro Rivals</strong><span>Game Designer / Project Design Lead</span></div>
-      <div class="credit"><strong>Hearthstone</strong><span>Programmer / Junior Designer</span></div>
-      <div class="credit"><strong>Wardogs</strong><span>Junior Gameplay Programmer</span></div>
-      <div class="credit"><strong>Transformers: Reactivate</strong><span>Programmer / Junior Designer</span></div>
-      <div class="credit"><strong>KILLRUN</strong><span>Junior Gameplay Programmer</span></div>
-      <div class="credit"><strong>Battalion 1944</strong><span>Junior Gameplay Programmer</span></div>
-      <div class="credit"><strong>Unannounced AAA Title</strong><span>Programmer / Junior Designer</span></div>
-      <div class="credit"><strong>Unannounced AA Title</strong><span>Game Designer</span></div>
-    </div>
-  </section>
-
-  <section class="section">
-  <div class="section-heading">
-    <div>
-      <div class="eyebrow">Glad to have you here</div>
-    </div>
-
-    <div>
-      <h2>Designing clear, player-focused experiences.</h2>
 
       <p>
-        I look forward to sharing my passion for game design and innovation with you. Let's create memorable experiences together!
+        I’m inspired by games that combine strong mechanics with memorable worlds, characters and player choices. I’m especially drawn to design that feels invisible when it works well: clear feedback, satisfying progression, readable systems and moments where players instinctively understand what they can do next.
       </p>
 
-      <a href="about.html" class="case-button accent">
-        Learn more about me
-      </a>
-    </div>
-  </div>
-</section>
+      <p>
+        Outside of games, I’m a tech enthusiast, sports fan, wildlife lover, gardener and proud owner of two mischievous cats. I like bringing curiosity from different parts of life into the way I think about players, systems and worlds.
+      </p>
+    </section>
+
+    <section class="section alt">
+      <div class="section-heading">
+        <div><div class="eyebrow">Values</div></div>
+        <div><h2>Team Culture & Values</h2></div>
+      </div>
+
+      <p>
+        I care a lot about communication and team culture. I value kindness, clarity and trust, and I try to bring those qualities into the way I work with designers, engineers, artists, production, QA, localisation and stakeholders.
+      </p>
+
+      <p>
+        I’m also a Women in Games ambassador and care about inclusive, supportive environments where people feel safe to share ideas, grow and do their best work.
+      </p>
+
+      <div class="values-list">
+        <div class="value-pill">Kindness</div>
+        <div class="value-pill">Clarity</div>
+        <div class="value-pill">Trust</div>
+        <div class="value-pill">Curiosity</div>
+      </div>
+    </section>
 
 <section class="section">
-  <div class="section-heading">
-    <div>
-      <div class="eyebrow">Connect</div>
-    </div>
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Explore More</div>
+        </div>
 
-    <div>
-      <h2>Like my work? Let's connect!</h2>
+        <div>
+          <h2>Want to see the rest of my work?</h2>
 
-      <div class="contact-buttons">
-        <a href="mailto:laurakentcroft@gmail.com" class="case-button accent">
-          Email
-        </a>
-
-        <a href="https://www.linkedin.com/in/laura-kentcroft/" class="case-button accent" target="_blank">
-          LinkedIn
-        </a>
+          <div class="explore-buttons">
+            <a href="index.html#case-studies" class="case-button accent">
+              View all case studies
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Connect</div>
+        </div>
+
+        <div>
+          <h2>Like my work? Let's connect!</h2>
+
+          <div class="contact-buttons">
+            <a href="mailto:laurakentcroft@gmail.com" class="case-button accent">
+              Email
+            </a>
+
+            <a href="https://www.linkedin.com/in/laura-kentcroft/" class="case-button accent" target="_blank">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
