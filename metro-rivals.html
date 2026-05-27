@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,7 @@
   .page {
     width: 100%;
     min-height: 100vh;
-    padding: 58px 64px 72px;
+    padding: 42px 64px 72px;
   }
 
   .hero {
@@ -451,6 +452,18 @@
     color: #050505;
   }
 
+
+  .explore-buttons {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+
+  .explore-buttons .case-button {
+    margin-top: 0;
+  }
+
   .contact-buttons {
     display: flex;
     gap: 14px;
@@ -460,6 +473,116 @@
 
   .contact-buttons .case-button {
     margin-top: 0;
+  }
+
+
+  /* HEADER / NAVIGATION */
+  .site-header {
+    width: 100%;
+    background: rgba(5, 5, 5, 0.96);
+    border-bottom: 1px solid #202020;
+    padding: 22px 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .site-logo {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-logo:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  .nav-links a:hover,
+  .dropdown:hover .dropdown-toggle {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle {
+    cursor: default;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 300px;
+    background: #0b0b0b;
+    border: 1px solid #282828;
+    padding: 10px 0;
+    z-index: 1001;
+  }
+
+  .dropdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 12px;
+  }
+
+  .dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 12px 18px;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover {
+    color: var(--accent);
+    background: #111;
+    text-decoration: none;
   }
 
   @media print {
@@ -512,9 +635,30 @@
   }
 
   @media (max-width: 800px) {
-    .contact-buttons {
+    .contact-buttons,
+    .explore-buttons {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .site-header {
+      padding: 18px 20px;
+    }
+
+    .site-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .dropdown-menu {
+      right: auto;
+      left: 0;
     }
   }
 </style>
@@ -522,6 +666,29 @@
 
 <body>
 <div id="top"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo">Laura Kentcroft</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Case Studies</button>
+
+        <div class="dropdown-menu">
+          <a href="metro-rivals.html">Metro Rivals</a>
+          <a href="design-sample.html">Design Sample</a>
+          <a href="hearthstone.html">Hearthstone</a>
+          <a href="gameplay-programming.html">Gameplay Programming Foundation</a>
+        </div>
+      </div>
+
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
 
 <main class="page">
 
@@ -831,6 +998,28 @@
       <div class="card green">
         <h3>What I learned</h3>
         <p>This project strengthened my confidence as a designer who can own complex features, support other designers and communicate across disciplines. It also reinforced that strong design leadership is not about having every answer immediately. It is about keeping the team aligned, asking the right questions, making decisions when needed and creating space for people to do their best work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">Explore More</div>
+      </div>
+
+      <div>
+        <h2>Want to see the rest of my work?</h2>
+
+        <div class="explore-buttons">
+          <a href="index.html#case-studies" class="case-button accent">
+            View all case studies
+          </a>
+
+          <a href="about.html" class="case-button gold">
+            Learn more about me
+          </a>
+        </div>
       </div>
     </div>
   </section>
